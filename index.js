@@ -9,14 +9,11 @@ const http = require("http");
 const server = http.createServer(app);
 const io = require("./utils/socket").initialize(server);
 
-const HOST_CLIENT = process.env.HOST_CLIENT;
-app.use("/uploads", express.static("uploads"));
-console.log(HOST_CLIENT);
 // ...
 app.use(express.json());
 app.use(
   cors({
-    origin: [`*`, `http://${HOST_CLIENT}:3005`, `http://localhost:3005`],
+    origin: [`*`, `http://localhost:3005`],
     credentials: true,
     optionsSuccessStatus: 200,
   })
@@ -24,14 +21,10 @@ app.use(
 app.use(cookieParser());
 // Routers
 const usersApi = require("./routes/Users");
-const postsApi = require("./routes/Posts");
-const commentsApi = require("./routes/Comments");
-const filesApi = require("./routes/Files");
+
 
 app.use("/users", usersApi);
-app.use("/posts", postsApi);
-app.use("/comments", commentsApi);
-app.use("/files", filesApi);
+
 
 db.sequelize.sync().then(() => {
   app.listen(port, () => {
