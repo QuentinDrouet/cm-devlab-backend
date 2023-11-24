@@ -1,0 +1,4 @@
+PORT = "3011"
+JWT_SECRET_KEY = "secretkey"
+SECRET_ENCRYPT_COOKIE_KEY = "secretkey"
+HOST_CLIENT = "127.0.0.1"
