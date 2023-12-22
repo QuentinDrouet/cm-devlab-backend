@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
         },
     })
     Jobs.associate = (models) => {
-
+        Jobs.hasMany(models.Agents,{});
     }
     return Jobs;
 }

@@ -34,6 +34,8 @@ module.exports = (sequelize, DataTypes) => {
         }
     })
     Agents.associate = (models) => {
+        Agents.belongsTo(models.Jobs,{});
+
     }
     return Agents;
 }

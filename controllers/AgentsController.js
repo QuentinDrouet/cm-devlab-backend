@@ -1,4 +1,5 @@
 const { Agents } = require('../models');
+const { Jobs } = require('../models');
 
 const calculateScoreAgent = (age, jobSeniorityDate, postSeniorityDate) => {
     const currentYear = new Date().getFullYear();
@@ -8,13 +9,18 @@ const calculateScoreAgent = (age, jobSeniorityDate, postSeniorityDate) => {
     if (age <= 18) {
         return (1 + 0.02 * jobSeniorityYears) * (1 + 0.02 * postSeniorityYears)
     }
-    else return (1 + 0.02 * (age - 18)) * (1 + 0.02 * jobSeniorityYears) * (1 + 0.02 * postSeniorityYears);
+    else return (1 + 0.04 * (age - 18)) * (1 + 0.02 * jobSeniorityYears) * (1 + 0.02 * postSeniorityYears);
 };
 
 
 exports.getAgents = async (req, res) => {
     try {
-        const agents = await Agents.findAll();
+        const agents = await Agents.findAll({
+            include:[
+                {model:Jobs},
+            ],
+        }
+        );
         res.status(200).json(agents);
     } catch (error) {
         res.status(500).json({ error: error.message });
