@@ -42,11 +42,11 @@ exports.getAgentById = async (req, res) => {
 
 exports.createAgent = async (req, res) => {
     try {
-        const { firstName, lastName, age, email, job_seniority, post_seniority } = req.body;
+        const { firstName, lastName, age, email, job_seniority, post_seniority, JobId } = req.body;
         const score_agent = calculateScoreAgent(age, new Date(job_seniority), new Date(post_seniority));
 
         const newAgent = await Agents.create({
-            firstName, lastName, age, email, job_seniority, post_seniority, score_agent
+            firstName, lastName, age, email, job_seniority, post_seniority, score_agent, JobId
         });
         res.status(201).json(newAgent);
     } catch (error) {
