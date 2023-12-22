@@ -12,11 +12,39 @@ module.exports = (sequelize, DataTypes) => {
             type:DataTypes.STRING,
             allowNull:true,
         },
-        physical:{
+        manual_handling:{
+            type:DataTypes.BOOLEAN,
+            allowNull:false,
+        },
+        awkward_postures:{
+            type:DataTypes.BOOLEAN,
+            allowNull:false,
+        },
+        hazardous_chemicals:{
+            type:DataTypes.BOOLEAN,
+            allowNull:false,
+        },
+        hyperbaric_environment:{
+            type:DataTypes.BOOLEAN,
+            allowNull:false,
+        },
+        extreme_temperatures:{
+            type:DataTypes.BOOLEAN,
+            allowNull:false,
+        },
+        noise:{
             type:DataTypes.BOOLEAN,
             allowNull:false,
         },
         night_shift:{
+            type:DataTypes.BOOLEAN,
+            allowNull:false,
+        },
+        alternating_shifts:{
+            type:DataTypes.BOOLEAN,
+            allowNull:false,
+        },
+        repetitive_work:{
             type:DataTypes.BOOLEAN,
             allowNull:false,
         },
