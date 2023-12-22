@@ -16,19 +16,17 @@ exports.createJob = async (req, res) => {
   const jobInfos = req.body;
 
   let indiceDePenibilite = 0;
-  if (jobInfos.physical) indiceDePenibilite += 5;
-  if (jobInfos.night_shift) indiceDePenibilite += 5;
+  if (jobInfos.physical) indiceDePenibilite += 1;
+  if (jobInfos.night_shift) indiceDePenibilite += 1;
   jobInfos.job_score=indiceDePenibilite;
   console.log(jobInfos);
   try {
-      const job = await Jobs.create(
-          jobInfos
-        );
-      res.status(200).json("job created.");
-
+    const job = await Jobs.create(
+      jobInfos
+    );
+    res.status(200).json("job created.");
   } catch (error) {
-        res.status(400).json("An error occured while creating job ");
-
+    res.status(400).json("An error occured while creating job ");
   }
 };
 
