@@ -21,9 +21,11 @@ app.use(
 app.use(cookieParser());
 // Routers
 const usersApi = require("./routes/Users");
+const agentsApi = require("./routes/Agents");
 
 
 app.use("/users", usersApi);
+app.use("/agents", agentsApi);
 
 
 db.sequelize.sync().then(() => {
