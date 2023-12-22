@@ -16,7 +16,6 @@ module.exports = (sequelize, DataTypes) => {
             type:DataTypes.BOOLEAN,
             allowNull:false,
         },
-    
     })
     Users.associate = (models) => {
 

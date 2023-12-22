@@ -20,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
             type:DataTypes.BOOLEAN,
             allowNull:false,
         },
+        job_score:{
+            type:DataTypes.FLOAT,
+            allowNull:true,
+        },
     })
     Jobs.associate = (models) => {
 
