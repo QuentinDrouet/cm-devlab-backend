@@ -14,7 +14,7 @@ router.post("/login", usersControllers.authenticationUser);
 //modify user infos
 router.put("/:id", usersControllers.modifyUser);
 
-router.delete("/:id",verifyLib.verify, usersControllers.deleteUser);
+router.delete("/:id", usersControllers.deleteUser);
 
 
 

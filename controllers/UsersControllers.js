@@ -110,7 +110,13 @@ exports.modifyUser = async (req, res) => {
 // Delete user
 exports.deleteUser = async (req, res) => {
     const id = req.params;
-    const userToDelete = await Users.findByPk(id);
-    await userToDelete.destroy();
-    res.status(200).json("user to delete");
+    const userToDelete = await Users.findByPk(id.id);
+    try {
+          await userToDelete.destroy();
+          res.status(200).json("User succesfully deleted");
+
+    } catch (error) {
+          res.status(400).json("User doesn't exist.");
+
+    }
 };

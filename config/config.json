@@ -1,12 +1,11 @@
 {
   "development": {
-    "username": "root",
-    "password": "root",
-    "database": "name",
-    "host": "127.0.0.1",
+    "username": "holo",
+    "password": "project",
+    "database": "holo",
+    "host": "37.187.183.180",
     "logging": false,
-    "dialect": "mysql"
-
+    "dialect": "postgres"
   },
   "test": {
     "username": "root",
@@ -22,5 +21,4 @@
     "host": "127.0.0.1",
     "dialect": "mysql"
   }
-
 }
