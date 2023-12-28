@@ -8,10 +8,6 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: true,
         },
-        job_field:{
-            type:DataTypes.STRING,
-            allowNull:true,
-        },
         manual_handling:{
             type:DataTypes.BOOLEAN,
             allowNull:false,
