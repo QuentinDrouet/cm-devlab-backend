@@ -1,34 +1,46 @@
 module.exports = (sequelize, DataTypes) => {
     const Agents = sequelize.define("Agents",{
-        firstName:{
+        firstname:{
             type: DataTypes.STRING,
             allowNull: false,
         },
-        lastName:{
+        lastname:{
             type: DataTypes.STRING,
             allowNull: false,
         },
-        age:{
-            type: DataTypes.INTEGER,
+        birthdate:{
+            type: DataTypes.DATE,
             allowNull:false,
         },
         email:{
             type: DataTypes.STRING,
-            allowNull:false,
+            allowNull:true,
+        },
+        phone:{
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        contract_type:{
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        contract_start:{
+            type: DataTypes.DATE,
+            allowNull: false,
+        },
+        contract_end:{
+            type: DataTypes.DATE,
+            allowNull: true,
         },
         job_seniority: {
-            type: DataTypes.DATE,
+            type: DataTypes.INTEGER,
             allowNull: false
         },
-        post_seniority: {
-            type: DataTypes.DATE,
-            allowNull: false
-        },
-        score_agent: {
+        agent_score: {
             type: DataTypes.FLOAT,
             allowNull: true
         },
-        weakening_score: {
+        wear_score: {
             type: DataTypes.FLOAT,
             allowNull: true
         }
