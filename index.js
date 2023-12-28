@@ -13,7 +13,7 @@ const io = require("./utils/socket").initialize(server);
 app.use(express.json());
 app.use(
   cors({
-    origin: [`*`, `http://localhost:3005`],
+    origin: [`*`, `http://localhost:5173`],
     credentials: true,
     optionsSuccessStatus: 200,
   })

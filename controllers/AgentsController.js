@@ -42,11 +42,16 @@ exports.getAgentById = async (req, res) => {
 
 exports.createAgent = async (req, res) => {
     try {
-        const { firstName, lastName, age, email, job_seniority, post_seniority, JobId } = req.body;
-        const score_agent = calculateScoreAgent(age, new Date(job_seniority), new Date(post_seniority));
+        const { firstname, lastname, birthdate, email, phone, contract_type, contract_start, contract_end, job_seniority, JobId } = req.body;
+
+        const age = new Date().getFullYear() - new Date(birthdate).getFullYear();
+        const job_seniority_date = new Date().setFullYear(new Date().getFullYear() - job_seniority)
+        const agent_score = calculateScoreAgent(age, new Date(job_seniority_date), new Date(contract_start));
+        const job = await Jobs.findByPk(JobId);
+        const wear_score = job.job_score * agent_score;
 
         const newAgent = await Agents.create({
-            firstName, lastName, age, email, job_seniority, post_seniority, score_agent, JobId
+            firstname, lastname, birthdate, email, phone, contract_type, contract_start, contract_end, job_seniority, agent_score, wear_score, JobId
         });
         res.status(201).json(newAgent);
     } catch (error) {
@@ -56,13 +61,18 @@ exports.createAgent = async (req, res) => {
 
 exports.modifyAgent = async (req, res) => {
     try {
-        const { firstName, lastName, age, email, job_seniority, post_seniority } = req.body;
-        const score_agent = calculateScoreAgent(age, new Date(job_seniority), new Date(post_seniority));
+        const { firstname, lastname, birthdate, email, phone, contract_type, contract_start, contract_end, job_seniority, JobId } = req.body;
+        
+        const age = new Date().getFullYear() - new Date(birthdate).getFullYear();
+        const job_seniority_date = new Date().setFullYear(new Date().getFullYear() - job_seniority)
+        const agent_score = calculateScoreAgent(age, new Date(job_seniority_date), new Date(contract_start));
+        const job = await Jobs.findByPk(JobId);
+        const wear_score = job.job_score * agent_score;
 
         const agentToUpdate = await Agents.findByPk(req.params.id);
         if (agentToUpdate) {
             await agentToUpdate.update({
-                firstName, lastName, age, email, job_seniority, post_seniority, score_agent
+                firstname, lastname, birthdate, email, phone, contract_type, contract_start, contract_end, job_seniority, agent_score, wear_score, JobId
             });
             res.status(200).json({ message: "Agent updated successfully" });
         } else {
