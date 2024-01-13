@@ -7,6 +7,7 @@ const calculateJobScore = (job) => {
   let indiceDePenibilite = 1;
   if (job.manual_handling) indiceDePenibilite += 1;
   if (job.awkward_postures) indiceDePenibilite += 1;
+  if (job.mechanical_vibrations) indiceDePenibilite += 1;
   if (job.hazardous_chemicals) indiceDePenibilite += 1;
   if (job.hyperbaric_environment) indiceDePenibilite += 1;
   if (job.extreme_temperatures) indiceDePenibilite += 1;

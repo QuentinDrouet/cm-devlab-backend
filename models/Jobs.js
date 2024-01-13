@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
             type:DataTypes.BOOLEAN,
             allowNull:false,
         },
+        mechanical_vibrations:{
+            type:DataTypes.BOOLEAN,
+            allowNull:false,
+        },
         hazardous_chemicals:{
             type:DataTypes.BOOLEAN,
             allowNull:false,
