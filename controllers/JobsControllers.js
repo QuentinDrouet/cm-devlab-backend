@@ -24,6 +24,17 @@ exports.getJobs = async (req, res) => {
   res.status(200).json(listOfJobs);
 };
 
+// get job by id
+exports.getJobById = async (req, res) => {
+  const id = req.params.id;
+  const job = await Jobs.findByPk(id);
+  if (job) {
+    res.status(200).json(job);
+  } else {
+    res.status(400).json("job not found");
+  }
+};
+
 // create job
 exports.createJob = async (req, res) => {
   const jobInfos = req.body;
