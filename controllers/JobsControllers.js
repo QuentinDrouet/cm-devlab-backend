@@ -66,8 +66,8 @@ exports.modifyJob = async (req, res) => {
 
 // Delete job
 exports.deleteJob = async (req, res) => {
-  const id = req.params;
-  const jopToDelete = await Jobs.findByPk(id);
+  const id = req.params.id;
+  const jobToDelete = await Jobs.findByPk(id);
   await jobToDelete.destroy();
   res.status(200).json("job to delete");
 };
